@@ -8,6 +8,6 @@ const db = sql.createConnection({
     database: process.env.DB_NAME
 })
  
-export {
+export { 
     db
 }

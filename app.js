@@ -171,16 +171,13 @@ const server = new ApolloServer({
 })
 
   // Enable CORS for all origins
-  // const corsOptions = (origin, callback) => {
-  //   const allowedOrigins = ['https://graph.asfischolar.com', 'http://localhost:9000', 'https://asfischolar.net']; // Add other origins as needed
-  //   if (allowedOrigins.indexOf(origin) !== -1) {
-  //     callback(null, true); // Allow request
-  //   } else {
-  //     callback(new Error('Not allowed by CORS')); // Reject request
-  //   }
-  // };
-  const corsOptions = {
-    origin: '*',  // Allow all origins (for testing purposes)
+  const corsOptions = (origin, callback) => {
+    const allowedOrigins = ['https://graph.asfischolar.com', 'http://localhost:9000', 'https://asfischolar.net']; // Add other origins as needed
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true); // Allow request
+    } else {
+      callback(new Error('Not allowed by CORS')); // Reject request
+    }
   };
   
   

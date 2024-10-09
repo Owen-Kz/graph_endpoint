@@ -1,4 +1,4 @@
-import { db } from "../routes/db.config.js";
+const { db } = require("../routes/db.config.js");
 
 export async function findChannelByPassphrase(passphrase) {
 

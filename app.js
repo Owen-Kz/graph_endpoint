@@ -172,7 +172,7 @@ const server = new ApolloServer({
 
   // Enable CORS for all origins
   const corsOptions = (origin, callback) => {
-    const allowedOrigins = ['http://localhost:9000', 'https://asfischolar.net', 'https://graph.asfischolar.com']; // Add other origins as needed
+    const allowedOrigins = ['https://graph.asfischolar.com', 'http://localhost:9000', 'https://asfischolar.net']; // Add other origins as needed
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true); // Allow request
     } else {

@@ -1,4 +1,4 @@
-const crypto = require('crypto'); // Use require instead of import
+import crypto from 'crypto';
 
 /**
  * Generates a user token based on a passphrase using SHA-256.

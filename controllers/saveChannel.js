@@ -1,5 +1,5 @@
-const { db } = require("../routes/db.config.js"); // Use require instead of import
-const { createSecretSalt, GenerateRandomID, generateUserToken } = require("./saltAndToken.js"); // Use require instead of import
+import { db } from "../routes/db.config.js"
+import { createSecretSalt, GenerateRandomID, generateUserToken } from "./saltAndToken.js"
 
 
 export function SaveChannel(title, pstn, host, attendee, channel){

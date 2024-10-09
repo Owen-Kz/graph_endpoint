@@ -1,13 +1,13 @@
-const { config } = require('dotenv');
-const { ApolloServer } = require('@apollo/server');
-const { startStandaloneServer } = require('@apollo/server/standalone');
-const { typeDefs } = require('./controllers/schema.js');
-const cors = require('cors');
-const { SaveChannel } = require('./controllers/saveChannel.js');
-const { v4: uuidv4 } = require('uuid'); 
-const { findChannelByPassphrase } = require('./controllers/findChannel.js');
-const { createSecretSalt, GenerateRandomID, generateUserToken } = require('./controllers/saltAndToken.js');
-const { isHost } = require('./controllers/isHost.js');
+import  {config}  from 'dotenv';
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
+import { typeDefs } from './controllers/schema.js';
+import cors from "cors"
+import { SaveChannel } from './controllers/saveChannel.js';
+import { v4 as uuidv4 } from 'uuid'; 
+import { findChannelByPassphrase } from './controllers/findChannel.js';
+import { createSecretSalt, GenerateRandomID, generateUserToken } from './controllers/saltAndToken.js';
+import { isHost } from './controllers/isHost.js';
 
 config();
   try {
@@ -180,15 +180,11 @@ const server = new ApolloServer({
     }
   };
   
-
-async function StartServerFUNCTION(){
+  
   const { url } = await startStandaloneServer(server, {
     listen: { port: process.env.PORT || 14000, host: '0.0.0.0' },
     cors: corsOptions, // Add CORS options here
   });
-}
-
-StartServerFUNCTION()
 
 console.log("Server Listing on port", process.env.PORT)
 

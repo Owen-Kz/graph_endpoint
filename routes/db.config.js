@@ -1,6 +1,5 @@
-const { config } = require('dotenv'); // Importing dotenv
-const sql = require('mysql2'); // Importing mysql2
-
+import { config } from "dotenv"
+import sql from "mysql2"
 config();
 const db = sql.createConnection({
     host: process.env.DB_HOST,

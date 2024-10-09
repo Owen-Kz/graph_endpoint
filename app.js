@@ -181,7 +181,7 @@ const server = new ApolloServer({
   };
   
   const { url } = await startStandaloneServer(server, {
-    listen: { port: process.env.PORT },
+    listen: { port: process.env.PORT || 14000, host: '0.0.0.0' },
     cors: corsOptions, // Add CORS options here
   });
 

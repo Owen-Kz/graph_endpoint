@@ -1,4 +1,5 @@
 import  {config}  from 'dotenv';
+config();
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 import { typeDefs } from './controllers/schema.js';
@@ -9,7 +10,7 @@ import { findChannelByPassphrase } from './controllers/findChannel.js';
 import { createSecretSalt, GenerateRandomID, generateUserToken } from './controllers/saltAndToken.js';
 import { isHost } from './controllers/isHost.js';
 
-config();
+
   try {
 
     const resolvers = {
@@ -181,11 +182,13 @@ const server = new ApolloServer({
   };
   
   
+async function STartFunction(){
   const { url } = await startStandaloneServer(server, {
     listen: { port: process.env.PORT || 14000, host: '0.0.0.0' },
     cors: corsOptions, // Add CORS options here
   });
-
+}
+STartFunction()
 console.log("Server Listing on port", process.env.PORT)
 
 

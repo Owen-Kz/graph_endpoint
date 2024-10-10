@@ -1,6 +1,7 @@
-import { db } from "../routes/db.config.js";
+const { db } = require("../routes/db.config");
 
-export async function findChannelByPassphrase(passphrase) {
+
+async function findChannelByPassphrase(passphrase) {
 
   return new Promise((resolve, reject) => {
     db.query("SELECT * FROM channels WHERE host = ? OR view = ?", [passphrase, passphrase], (err, data) => {
@@ -13,3 +14,7 @@ export async function findChannelByPassphrase(passphrase) {
     });
   });
 }
+
+
+
+module.exports = findChannelByPassphrase

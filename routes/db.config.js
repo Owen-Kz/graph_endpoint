@@ -1,5 +1,8 @@
-import { config } from "dotenv"
-import sql from "mysql2"
+
+const { config } = require('dotenv');
+const sql = require('mysql2'); // Use require instead of import
+
+
 config();
 const db = sql.createConnection({
     host: process.env.DB_HOST,
@@ -8,6 +11,6 @@ const db = sql.createConnection({
     database: process.env.DB_NAME
 })
  
-export { 
+module.exports = { 
     db
 }

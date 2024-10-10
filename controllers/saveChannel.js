@@ -1,8 +1,8 @@
-import { db } from "../routes/db.config.js"
-import { createSecretSalt, GenerateRandomID, generateUserToken } from "./saltAndToken.js"
+const { db } = require("../routes/db.config.js");
+const { GenerateRandomID, createSecretSalt, generateUserToken } = require("./saltAndToken.js");
 
 
-export function SaveChannel(title, pstn, host, attendee, channel){
+function SaveChannel(title, pstn, host, attendee, channel){
     const secretSalt = createSecretSalt()
     const rtcToken = generateUserToken(channel)
     const rtmToken = generateUserToken(channel)
@@ -24,3 +24,6 @@ export function SaveChannel(title, pstn, host, attendee, channel){
         }
     })
 }
+
+
+module.exports = SaveChannel

@@ -1,17 +1,17 @@
-import  {config}  from 'dotenv';
-config();
-import { ApolloServer } from '@apollo/server';
-import { startStandaloneServer } from '@apollo/server/standalone';
-import { typeDefs } from './controllers/schema.js';
-import cors from "cors"
-import { SaveChannel } from './controllers/saveChannel.js';
-import { v4 as uuidv4 } from 'uuid'; 
-import { findChannelByPassphrase } from './controllers/findChannel.js';
-import { createSecretSalt, GenerateRandomID, generateUserToken } from './controllers/saltAndToken.js';
-import { isHost } from './controllers/isHost.js';
+const { config } = require("dotenv");
+const sql = require('mysql2'); // Use require instead of import
+const { ApolloServer } = require('@apollo/server');
+const { startStandaloneServer } = require('@apollo/server/standalone');
+const typeDefs = require("./controllers/schema");
+const cors = require("cors");
+const { v4: uuidv4 } = require('uuid'); 
+const SaveChannel = require("./controllers/saveChannel");
+const findChannelByPassphrase = require("./controllers/findChannel");
+const { createSecretSalt, GenerateRandomID, generateUserToken } = require("./controllers/saltAndToken");
+const isHost = require("./controllers/isHost");
+config()
 
-
-  try {
+try{
 
     const resolvers = {
       Query: {

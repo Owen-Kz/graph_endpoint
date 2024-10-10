@@ -1,11 +1,11 @@
-import crypto from 'crypto';
+const crypto = require('crypto'); // Use require instead of import
 
 /**
  * Generates a user token based on a passphrase using SHA-256.
  * @param {string} passphrase - The passphrase used to generate the user token.
  * @returns {string} - The generated user token as a hexadecimal string.
  */
-export function generateUserToken(passphrase) {
+function generateUserToken(passphrase) {
   // Create a hash using SHA-256
   const hash = crypto.createHash('sha256');
   
@@ -21,7 +21,7 @@ export function generateUserToken(passphrase) {
  * @param {number} length - The length of the salt in bytes (default 16).
  * @returns {string} - The base64-encoded secret salt.
  */
-export function createSecretSalt(length = 16) {
+ function createSecretSalt(length = 16) {
   // Generate random bytes of the specified length
   const salt = crypto.randomBytes(length);
   
@@ -29,6 +29,13 @@ export function createSecretSalt(length = 16) {
   return salt.toString('base64');
 }
 
-export function GenerateRandomID() {
+ function GenerateRandomID() {
   return Math.floor(100000 + Math.random() * 900000);
+}
+
+
+module.exports = {
+  GenerateRandomID,
+  createSecretSalt,
+  generateUserToken
 }

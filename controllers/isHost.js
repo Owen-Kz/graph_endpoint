@@ -1,6 +1,7 @@
-import { db } from "../routes/db.config.js";
+const { db } = require("../routes/db.config");
 
-export async function isHost(passphrase) {
+
+async function isHost(passphrase) {
 
 
     return new Promise((resolve, reject) => {
@@ -23,3 +24,5 @@ export async function isHost(passphrase) {
       });
     });
 }
+
+module.exports = isHost

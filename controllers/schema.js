@@ -1,4 +1,4 @@
-export const typeDefs = `#graphql
+const typeDefs = `#graphql
 
 type PassphraseType {
   host: String,
@@ -125,3 +125,7 @@ input PassphraseInput{
   view: String
 }
 `;
+
+
+
+module.exports = typeDefs

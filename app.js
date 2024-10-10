@@ -189,7 +189,9 @@ async function STartFunction(){
   });
 }
 STartFunction()
-console.log("Server Listing on port", process.env.PORT)
+res.json({
+success:`Server Listing on port ${process.env.PORT}`
+})
 
 
 
@@ -201,6 +203,7 @@ console.log("Server Listing on port", process.env.PORT)
     // res.json(response);
   } catch (error) {
     console.error('Error executing query:', error);
+    return {error:error}
     
   }
 

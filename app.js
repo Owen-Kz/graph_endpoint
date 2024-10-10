@@ -166,7 +166,7 @@ try {
 
   // Enable CORS for all origins
   const corsOptions = (origin, callback) => {
-    const allowedOrigins = ['https://graph.asfischolar.com', 'http://localhost:9000', 'https://asfischolar.net', 'https://graph-endpoint.onrender.com'];
+    const allowedOrigins = ['https://graph.asfischolar.com', 'http://localhost:9000', 'https://asfischolar.net', 'https://graph-endpoint.onrender.com', 'https://www.asfischolar.net',];
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {

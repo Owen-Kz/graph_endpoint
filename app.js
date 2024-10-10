@@ -197,11 +197,6 @@ return {success:`Server Listing on port ${process.env.PORT}`
 
 
 
-    // // Execute the query with the schema and resolvers
-    // const response = await graphql(schema, query, null, null, variables);
-    // console.log('GraphQL Response:', response);
-    
-    // res.json(response);
   } catch (error) {
     console.error('Error executing query:', error);
     return error

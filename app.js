@@ -9,6 +9,7 @@ const SaveChannel = require("./controllers/saveChannel");
 const findChannelByPassphrase = require("./controllers/findChannel");
 const { createSecretSalt, GenerateRandomID, generateUserToken } = require("./controllers/saltAndToken");
 const isHost = require("./controllers/isHost");
+const { connectToDatabase } = require("./routes/db.config");
 config()
 
 try{
@@ -183,15 +184,15 @@ const server = new ApolloServer({
   
   
 async function STartFunction(){
+  connectToDatabase()
   const { url } = await startStandaloneServer(server, {
     listen: { port: process.env.PORT || 14000, host: '0.0.0.0' },
     cors: corsOptions, // Add CORS options here
   });
 }
 STartFunction()
-res.json({
-success:`Server Listing on port ${process.env.PORT}`
-})
+return {success:`Server Listing on port ${process.env.PORT}`
+}
 
 
 
@@ -203,7 +204,7 @@ success:`Server Listing on port ${process.env.PORT}`
     // res.json(response);
   } catch (error) {
     console.error('Error executing query:', error);
-    return {error:error}
+    return error
     
   }
 

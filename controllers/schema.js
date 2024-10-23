@@ -20,6 +20,7 @@ type roomId{
 type JoinChannelResponse {
   token: String
   channel: String
+  channel_id: String
   title: String
   rtmToken: String
   uid: String

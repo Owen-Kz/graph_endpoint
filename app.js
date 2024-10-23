@@ -27,23 +27,23 @@ try {
       },
       joinChannel: async (_, { passphrase }) => {
         try {
+          console.log("JOIN CHANNEL ACTION")
           const channel = await findChannelByPassphrase(passphrase);
-          const userId = GenerateRandomID();
-
+          const userId = '244662072';
           if (!channel) {
             throw new Error('Channel not found');
           }
-
           return {
             token: channel.channel,
             channel: channel.channel,
+            channel_id:channel.channel,
             title: channel.title,
-            uid: GenerateRandomID(),
+            uid: userId,
             isHost: await isHost(passphrase),
             secret: channel.secret,
             rtmToken: channel.channel,
             screenShareUid: userId,
-            screenShareToken: channel.screenShareRtcToken,
+            screenShareToken: generateUserToken(passphrase),
             chat: {
               groupId: channel.chatGroupId,
               userToken: generateUserToken(passphrase),
@@ -52,9 +52,9 @@ try {
             uid: userId,
             secretSalt: channel.secret,
             mainUser: {
-              rtc: channel.mainUserRTCToken,
-              rtm: channel.mainUserRtmToken,
-              uid: channel.mainUserUid,
+              rtc: generateUserToken(passphrase),
+              rtm: generateUserToken(passphrase),
+              uid: userId,
             },
             pstn: {
               number: "52535",
@@ -69,13 +69,13 @@ try {
               host: channel.host,
             },
             whiteboard: {
-              room_uuid: channel.whiteboardRoomUuid,
+              room_uuid: userId,
               room_token: channel.whiteboardRoomToken,
             },
             screenShare: {
-              rtc: channel.screenShareRtcToken,
-              rtm: channel.screenShareRtmToken,
-              uid: channel.screenShareUid,
+              rtc: generateUserToken(passphrase),
+              rtm: generateUserToken(passphrase),
+              uid: userId,
             },
             roomInfo: {
               isJoinDataFetched: false,
